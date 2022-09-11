@@ -1,47 +1,49 @@
-import Card from '@mui/material/Card';
-import { styled } from '@mui/material/styles';
-import CardContent from '@mui/material/CardContent';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
-import { memo } from 'react';
+import Card from "@mui/material/Card";
+import { styled } from "@mui/material/styles";
+import CardContent from "@mui/material/CardContent";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
+import { memo } from "react";
 
-const Root = styled('div')(({ theme }) => ({
-  '& table ': {
-    '& th:first-of-type, & td:first-of-type': {
+const Root = styled("div")(({ theme }) => ({
+  "& table ": {
+    "& th:first-of-type, & td:first-of-type": {
       paddingLeft: `${0}!important`,
     },
-    '& th:last-child, & td:last-child': {
+    "& th:last-child, & td:last-child": {
       paddingRight: `${0}!important`,
     },
   },
 
-  '& .divider': {
+  "& .divider": {
     width: 1,
     backgroundColor: theme.palette.divider,
     height: 144,
   },
 
-  '& .seller': {
+  "& .seller": {
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.getContrastText(theme.palette.primary.dark),
     marginRight: -88,
     paddingRight: 66,
     width: 480,
-    '& .divider': {
-      backgroundColor: theme.palette.getContrastText(theme.palette.primary.dark),
+    "& .divider": {
+      backgroundColor: theme.palette.getContrastText(
+        theme.palette.primary.dark
+      ),
       opacity: 0.5,
     },
   },
 }));
 
 const InvoiceTab = (props) => {
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
   });
 
@@ -60,12 +62,20 @@ const InvoiceTab = (props) => {
                   <tbody>
                     <tr>
                       <td className="pb-4">
-                        <Typography className="font-light" variant="h6" color="text.secondary">
+                        <Typography
+                          className="font-light"
+                          variant="h6"
+                          color="text.secondary"
+                        >
                           INVOICE
                         </Typography>
                       </td>
                       <td className="pb-4 px-8">
-                        <Typography className="font-light" variant="h6" color="inherit">
+                        <Typography
+                          className="font-light"
+                          variant="h6"
+                          color="inherit"
+                        >
                           {props.order.reference}
                         </Typography>
                       </td>
@@ -83,22 +93,32 @@ const InvoiceTab = (props) => {
                   </Typography>
                 )}
                 {props.order.customer.phone && (
-                  <Typography color="text.secondary">{props.order.customer.phone}</Typography>
+                  <Typography color="text.secondary">
+                    {props.order.customer.phone}
+                  </Typography>
                 )}
                 {props.order.customer.email && (
-                  <Typography color="text.secondary">{props.order.customer.email}</Typography>
+                  <Typography color="text.secondary">
+                    {props.order.customer.email}
+                  </Typography>
                 )}
               </div>
 
               <div className="seller flex items-center p-16">
-                <img className="w-80" src="assets/images/logo/logo.svg" alt="logo" />
+                <img
+                  className="w-80"
+                  src="assets/images/logo/educadao-logo.png"
+                  alt="logo"
+                />
 
                 <div className="divider mx-8 h-96" />
 
                 <div className="px-8">
                   <Typography color="inherit">FUSE INC.</Typography>
 
-                  <Typography color="inherit">2810 Country Club Road Cranford, NJ 07016</Typography>
+                  <Typography color="inherit">
+                    2810 Country Club Road Cranford, NJ 07016
+                  </Typography>
                   <Typography color="inherit">+66 123 455 87</Typography>
                   <Typography color="inherit">hello@fuseinc.com</Typography>
                   <Typography color="inherit">www.fuseinc.com</Typography>
@@ -120,9 +140,13 @@ const InvoiceTab = (props) => {
                   {props.order.products.map((product) => (
                     <TableRow key={product.id}>
                       <TableCell>
-                        <Typography variant="subtitle1">{product.name}</Typography>
+                        <Typography variant="subtitle1">
+                          {product.name}
+                        </Typography>
                       </TableCell>
-                      <TableCell align="right">{formatter.format(product.price)}</TableCell>
+                      <TableCell align="right">
+                        {formatter.format(product.price)}
+                      </TableCell>
                       <TableCell align="right">{product.quantity}</TableCell>
                       <TableCell align="right">
                         {formatter.format(product.price * product.quantity)}
@@ -196,12 +220,20 @@ const InvoiceTab = (props) => {
                   </TableRow>
                   <TableRow>
                     <TableCell>
-                      <Typography className="font-light" variant="h4" color="text.secondary">
+                      <Typography
+                        className="font-light"
+                        variant="h4"
+                        color="text.secondary"
+                      >
                         TOTAL
                       </Typography>
                     </TableCell>
                     <TableCell align="right">
-                      <Typography className="font-light" variant="h4" color="text.secondary">
+                      <Typography
+                        className="font-light"
+                        variant="h4"
+                        color="text.secondary"
+                      >
                         {formatter.format(props.order.total)}
                       </Typography>
                     </TableCell>
@@ -217,7 +249,11 @@ const InvoiceTab = (props) => {
 
               <div className="flex">
                 <div className="shrink-0">
-                  <img className="w-32" src="assets/images/logo/logo.svg" alt="logo" />
+                  <img
+                    className="w-32"
+                    src="assets/images/logo/educadao-logo.png"
+                    alt="logo"
+                  />
                 </div>
 
                 <Typography
@@ -225,11 +261,13 @@ const InvoiceTab = (props) => {
                   variant="caption"
                   color="text.secondary"
                 >
-                  In condimentum malesuada efficitur. Mauris volutpat placerat auctor. Ut ac congue
-                  dolor. Quisque scelerisque lacus sed feugiat fermentum. Cras aliquet facilisis
-                  pellentesque. Nunc hendrerit quam at leo commodo, a suscipit tellus dapibus. Etiam
-                  at felis volutpat est mollis lacinia. Mauris placerat sem sit amet velit mollis,
-                  in porttitor ex finibus. Proin eu nibh id libero tincidunt lacinia et eget eros.
+                  In condimentum malesuada efficitur. Mauris volutpat placerat
+                  auctor. Ut ac congue dolor. Quisque scelerisque lacus sed
+                  feugiat fermentum. Cras aliquet facilisis pellentesque. Nunc
+                  hendrerit quam at leo commodo, a suscipit tellus dapibus.
+                  Etiam at felis volutpat est mollis lacinia. Mauris placerat
+                  sem sit amet velit mollis, in porttitor ex finibus. Proin eu
+                  nibh id libero tincidunt lacinia et eget eros.
                 </Typography>
               </div>
             </div>

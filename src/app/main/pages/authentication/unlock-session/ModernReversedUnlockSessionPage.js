@@ -1,36 +1,38 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Controller, useForm } from 'react-hook-form';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
-import * as yup from 'yup';
-import _ from '@lodash';
-import Paper from '@mui/material/Paper';
-import AvatarGroup from '@mui/material/AvatarGroup';
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Controller, useForm } from "react-hook-form";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
+import _ from "@lodash";
+import Paper from "@mui/material/Paper";
+import AvatarGroup from "@mui/material/AvatarGroup";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  name: yup.string().required('You must enter your name'),
+  name: yup.string().required("You must enter your name"),
   password: yup
     .string()
-    .required('Please enter your password.')
-    .min(8, 'Password is too short - should be 8 chars minimum.'),
-  passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
+    .required("Please enter your password.")
+    .min(8, "Password is too short - should be 8 chars minimum."),
+  passwordConfirm: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
 const defaultValues = {
-  name: 'Brian Hughes',
-  password: '',
+  name: "Brian Hughes",
+  password: "",
 };
 
 function ModernReversedUnlockSessionPage() {
   const { control, formState, handleSubmit, reset } = useForm({
-    mode: 'onChange',
+    mode: "onChange",
     defaultValues,
     resolver: yupResolver(schema),
   });
@@ -46,7 +48,7 @@ function ModernReversedUnlockSessionPage() {
       <Paper className="flex w-full sm:w-auto min-h-full sm:min-h-auto md:w-full md:max-w-6xl rounded-0 sm:rounded-2xl sm:shadow overflow-hidden">
         <Box
           className="relative hidden md:flex flex-auto items-center justify-center h-full p-64 lg:px-112 overflow-hidden"
-          sx={{ backgroundColor: 'primary.main' }}
+          sx={{ backgroundColor: "primary.main" }}
         >
           <svg
             className="absolute inset-0 pointer-events-none"
@@ -58,7 +60,7 @@ function ModernReversedUnlockSessionPage() {
           >
             <Box
               component="g"
-              sx={{ color: 'primary.light' }}
+              sx={{ color: "primary.light" }}
               className="opacity-20"
               fill="none"
               stroke="currentColor"
@@ -71,7 +73,7 @@ function ModernReversedUnlockSessionPage() {
           <Box
             component="svg"
             className="absolute -top-64 -right-64 opacity-20"
-            sx={{ color: 'primary.light' }}
+            sx={{ color: "primary.light" }}
             viewBox="0 0 220 192"
             width="220px"
             height="192px"
@@ -89,7 +91,11 @@ function ModernReversedUnlockSessionPage() {
                 <rect x="0" y="0" width="4" height="4" fill="currentColor" />
               </pattern>
             </defs>
-            <rect width="220" height="192" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)" />
+            <rect
+              width="220"
+              height="192"
+              fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"
+            />
           </Box>
 
           <div className="z-10 relative w-full max-w-2xl">
@@ -98,14 +104,15 @@ function ModernReversedUnlockSessionPage() {
               <div>our community</div>
             </div>
             <div className="mt-24 text-lg tracking-tight leading-6 text-gray-400">
-              Fuse helps developers to build organized and well coded dashboards full of beautiful
-              and rich modules. Join us and start building your application today.
+              Fuse helps developers to build organized and well coded dashboards
+              full of beautiful and rich modules. Join us and start building
+              your application today.
             </div>
             <div className="flex items-center mt-32">
               <AvatarGroup
                 sx={{
-                  '& .MuiAvatar-root': {
-                    borderColor: 'primary.main',
+                  "& .MuiAvatar-root": {
+                    borderColor: "primary.main",
                   },
                 }}
               >
@@ -124,7 +131,11 @@ function ModernReversedUnlockSessionPage() {
 
         <div className="w-full sm:w-auto py-32 px-16 sm:p-48 md:p-64 rtl:border-r-1 ltr:border-l-1">
           <div className="w-full max-w-320 sm:w-320 mx-auto sm:mx-0">
-            <img className="w-48" src="assets/images/logo/logo.svg" alt="logo" />
+            <img
+              className="w-48"
+              src="assets/images/logo/educadao-logo.png"
+              alt="logo"
+            />
 
             <Typography className="mt-32 text-4xl font-extrabold tracking-tight leading-tight">
               Unlock your session
@@ -188,7 +199,10 @@ function ModernReversedUnlockSessionPage() {
                 Unlock your session
               </Button>
 
-              <Typography className="mt-32 text-md font-medium" color="text.secondary">
+              <Typography
+                className="mt-32 text-md font-medium"
+                color="text.secondary"
+              >
                 <span>I'm not</span>
                 <Link className="ml-4" to="/sign-in">
                   Brian Hughes
