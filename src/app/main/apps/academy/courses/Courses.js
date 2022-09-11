@@ -1,32 +1,32 @@
-import _ from '@lodash';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import { motion } from 'framer-motion';
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Box } from '@mui/system';
-import Switch from '@mui/material/Switch';
-import { FormControlLabel } from '@mui/material';
-import FusePageSimple from '@fuse/core/FusePageSimple';
-import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
-import { selectCategories } from '../store/categoriesSlice';
-import { getCourses, selectCourses } from '../store/coursesSlice';
-import CourseCard from './CourseCard';
+import _ from "@lodash";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Box } from "@mui/system";
+import Switch from "@mui/material/Switch";
+import { FormControlLabel } from "@mui/material";
+import FusePageSimple from "@fuse/core/FusePageSimple";
+import useThemeMediaQuery from "@fuse/hooks/useThemeMediaQuery";
+import { selectCategories } from "../store/categoriesSlice";
+import { getCourses, selectCourses } from "../store/coursesSlice";
+import CourseCard from "./CourseCard";
 
 function Courses(props) {
   const dispatch = useDispatch();
   const courses = useSelector(selectCourses);
   const categories = useSelector(selectCategories);
-  const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
+  const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down("lg"));
 
   // const theme = useTheme();
   const [filteredData, setFilteredData] = useState(null);
-  const [searchText, setSearchText] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchText, setSearchText] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [hideCompleted, setHideCompleted] = useState(false);
 
   useEffect(() => {
@@ -35,12 +35,16 @@ function Courses(props) {
 
   useEffect(() => {
     function getFilteredArray() {
-      if (searchText.length === 0 && selectedCategory === 'all' && !hideCompleted) {
+      if (
+        searchText.length === 0 &&
+        selectedCategory === "all" &&
+        !hideCompleted
+      ) {
         return courses;
       }
 
       return _.filter(courses, (item) => {
-        if (selectedCategory !== 'all' && item.category !== selectedCategory) {
+        if (selectedCategory !== "all" && item.category !== selectedCategory) {
           return false;
         }
 
@@ -70,22 +74,29 @@ function Courses(props) {
         <Box
           className="relative overflow-hidden flex shrink-0 items-center justify-center px-16 py-32 md:p-64"
           sx={{
-            backgroundColor: 'primary.main',
-            color: (theme) => theme.palette.getContrastText(theme.palette.primary.main),
+            backgroundColor: "primary.main",
+            color: (theme) =>
+              theme.palette.getContrastText(theme.palette.primary.main),
           }}
         >
           <div className="flex flex-col items-center justify-center  mx-auto w-full">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0 } }}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 0 } }}
+            >
               <Typography color="inherit" className="text-18 font-semibold">
-                FUSE ACADEMY
+                Educa.DAO
               </Typography>
             </motion.div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0 } }}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 0 } }}
+            >
               <Typography
                 color="inherit"
                 className="text-center text-32 sm:text-48 font-extrabold tracking-tight mt-4"
               >
-                What do you want to learn today?
+                Education for everyone
               </Typography>
             </motion.div>
             <motion.div
@@ -96,8 +107,7 @@ function Courses(props) {
                 color="inherit"
                 className="text-16 sm:text-20 mt-16 sm:mt-24 opacity-75 tracking-tight max-w-md text-center"
               >
-                Our courses will step you through the process of a building small applications, or
-                adding new features to existing applications.
+                Our courses will step you through the next level 🚀
               </Typography>
             </motion.div>
           </div>
@@ -151,7 +161,7 @@ function Courses(props) {
                 className="flex w-full sm:w-256 mx-8"
                 value={searchText}
                 inputProps={{
-                  'aria-label': 'Search',
+                  "aria-label": "Search",
                 }}
                 onChange={handleSearchText}
                 variant="outlined"
@@ -222,7 +232,7 @@ function Courses(props) {
           }, [filteredData])}
         </div>
       }
-      scroll={isMobile ? 'normal' : 'page'}
+      scroll={isMobile ? "normal" : "page"}
     />
   );
 }
