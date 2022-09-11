@@ -68,6 +68,7 @@ function Courses(props) {
   function handleSearchText(event) {
     setSearchText(event.target.value);
   }
+
   return (
     <FusePageSimple
       header={
@@ -84,9 +85,16 @@ function Courses(props) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0 } }}
             >
-              <Typography color="inherit" className="text-18 font-semibold">
-                Educa.DAO
-              </Typography>
+              <div className="logo">
+                <img
+                  width="128"
+                  src="assets/images/logo/educadao-logo.png"
+                  alt="logo"
+                />
+              </div>
+              {/*<Typography color="inherit" className="text-18 font-semibold">*/}
+              {/*  Educa.DAO*/}
+              {/*</Typography>*/}
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
