@@ -8,6 +8,9 @@ const settingsConfig = {
       navbar: {
         display: false,
       },
+      toolbar: {
+        display: false,
+      },
       footer: {
         display: false,
       },
